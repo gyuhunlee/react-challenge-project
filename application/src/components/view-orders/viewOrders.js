@@ -77,13 +77,25 @@ class ViewOrders extends Component {
         .catch(error => console.error(error));
     }
 
+    formatTimeOrder(time) {
+        time = new Date(time);
+
+        let newHours = time.getHours();
+        let newMinutes = time.getMinutes();
+        let newSeconds = time.getSeconds();
+
+        newMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
+        newSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
+
+        return `${newHours}:${newMinutes}:${newSeconds}`
+    }
+
     render() {
         return (
             <Template>
                 {this.state.showForm && <EditForm editClickedID={this.state.editClickedID} editOrder={this.editOrder.bind(this)}/>}
                 <div className="container-fluid">
                     {this.state.orders.map(order => {
-                        const createdDate = new Date(order.createdAt);
                         return (
                             <div className="row view-order-container" key={order._id}>
                                 <div className="col-md-4 view-order-left-col p-3">
@@ -91,7 +103,7 @@ class ViewOrders extends Component {
                                     <p>Ordered by: {order.ordered_by || ''}</p>
                                 </div>
                                 <div className="col-md-4 d-flex view-order-middle-col">
-                                    <p>Order placed at {`${createdDate.getHours()}:${createdDate.getMinutes()}:${createdDate.getSeconds()}`}</p>
+                                    <p>Order placed at {this.formatTimeOrder(order.createdAt)}</p>
                                     <p>Quantity: {order.quantity}</p>
                                  </div>
                                  <div className="col-md-4 view-order-right-col">
