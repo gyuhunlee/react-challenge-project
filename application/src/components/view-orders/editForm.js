@@ -21,7 +21,9 @@ class EditForm extends Component {
 
   submitOrder(event) {
     event.preventDefault();
-    this.props.editOrder(this.state);
+    var editedOrder = this.state;
+    editedOrder.ordered_by = this.props.editClickedID.ordered_by;
+    this.props.editOrder(editedOrder);
   }
 
   render() {
@@ -30,6 +32,7 @@ class EditForm extends Component {
         <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Menu</Form.Label>
           <Form.Control as="select" onChange={(event) => this.menuChosen(event)}>
+            <option value="" defaultValue hidden>Lunch menu</option>
             <option value="Soup of the Day">Soup of the Day</option>
             <option value="Linguini With White Wine Sauce">Linguini With White Wine Sauce</option>
             <option value="Eggplant and Mushroom Panini">Eggplant and Mushroom Panini</option>
