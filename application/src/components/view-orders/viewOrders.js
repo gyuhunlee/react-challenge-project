@@ -31,7 +31,7 @@ class ViewOrders extends Component {
                 id: modifiedOrder._id,
                 quantity: modifiedOrder.quantity,
                 order_item: modifiedOrder.order_item,
-                ordered_by: 'Unknown!'
+                ordered_by: modifiedOrder.ordered_by
             }),
             headers: {
                 'Content-Type': 'application/json'
