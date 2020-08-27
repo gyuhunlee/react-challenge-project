@@ -25,7 +25,6 @@ class ViewOrders extends Component {
     }
 
     editOrder(modifiedOrder) {
-        console.log(this.state.orders);
         fetch(`${SERVER_IP}/api/edit-order`, {
             method: 'POST',
             body: JSON.stringify({
