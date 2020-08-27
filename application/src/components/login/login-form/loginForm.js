@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; 
 import { loginUser } from '../../../redux/actions/authActions'
 
 const mapActionsToProps = dispatch => ({
@@ -8,22 +8,11 @@ const mapActionsToProps = dispatch => ({
   }
 })
 
-const mapStateToProps = (state) => {
-  return { auth: state.auth };
-}
-
 class LoginForm extends Component {
   state = {
     email: "",
     password: "",
   }
-
-  static getDerivedStateFormProps(nextProps, prevState) {
-    if (nextProps.auth.token) {
-      prevState.onLogin();
-    }
-  }
-
 
   login(e) {
     e.preventDefault();
@@ -54,4 +43,4 @@ class LoginForm extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(LoginForm);
+export default connect(null, mapActionsToProps)(LoginForm);

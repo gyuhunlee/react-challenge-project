@@ -5,6 +5,7 @@ import { logoutUser } from '../../redux/actions/authActions';
 import "./nav.css";
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return { auth: state.auth };
 }
 
