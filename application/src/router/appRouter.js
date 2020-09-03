@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Main, Login, OrderForm, ViewOrders } from '../components';
+import GuardedRouter from './guardedRouter';
 
 const AppRouter = (props) => {
   return (
     <Router>
       <Route path="/" exact component={Main} />
       <Route path="/login" exact component={Login} />
-      <Route path="/order" exact component={OrderForm} />
-      <Route path="/view-orders" exact component={ViewOrders} />
+      <GuardedRouter path="/order" exact component={OrderForm} />
+      <GuardedRouter path="/view-orders" exact component={ViewOrders} />
     </Router>
   );
 }
